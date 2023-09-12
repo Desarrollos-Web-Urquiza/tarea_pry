@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import useTask1 from '../composables/task1.ts';
+
+const { contador, incrementar } = useTask1();
 
 defineProps<{ msg: string }>()
 
@@ -14,6 +17,7 @@ const count = ref(0)
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
+      <button @click="incrementar">Incrementar contador: {{ contador }}</button>
     </p>
   </div>
 
