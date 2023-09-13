@@ -18,6 +18,19 @@ export default function useTask1() {
     // function incrementar() {
     //     contador.value++;
     // }
+    interface createGreetingProps {
+        presentation: string;
+        name: string;
+        surname: string;
+    }
+    
+    const createGreeting = ({
+        presentation,
+        name,
+        surname
+    }): createGreetingProps => ({
+        identification: createIdentification({name, surname})
+    })
 
     return {
         contador,
