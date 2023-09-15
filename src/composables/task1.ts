@@ -1,32 +1,30 @@
-import { ref } from 'vue';
-
 export default function useTask1() {
-    const contador = ref(0);
 
-    // function greeting() {
-    //    return 'Hola, me presento';  
-    // }
+    type Gender = "Masculino" | "Femenino";
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    interface GenderProps {
+        Gender: Gender;
+    }
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
-
-    // function incrementar() {
-    //     contador.value++;
-    // }
-
-     interface BirthdayProps {
+    const createGender = ({ 
+        Gender
+    }: GenderProps): string => {
+        return `y me considero '${Gender}'.`;
+    };
+    interface BirthdayProps {
         birthdayDate: Date;
     }
     
     const createBirthday = ({ 
         birthdayDate
     }: BirthdayProps): string => {
-        return `nací el '${birthdayDate}'`;
+        let birthdayDateString: String  = birthdayDate.toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            timeZone: 'UTC'
+        });
+        return `nací el '${birthdayDateString}'`;
     };
 
     interface IdentificationProps {
@@ -38,7 +36,7 @@ export default function useTask1() {
         name, 
         surname 
     }: IdentificationProps): string => {
-        return `Soy '${name} ${surname}'`;
+        return `Soy '${name} ${surname}', `;
     };
 
     interface createGreetingProps {
@@ -46,22 +44,23 @@ export default function useTask1() {
         name: string;
         surname: string;
         birthdayDate: Date;
+        Gender: Gender;
     }
     
     const createGreeting = ({
         presentation,
         name,
         surname,
-        birthdayDate
+        birthdayDate,
+        Gender
     }: createGreetingProps) => ({
         presentation: presentation,
         identification: createIdentification({name, surname}),
-        birthday: createBirthday({birthdayDate})
+        birthday: createBirthday({birthdayDate}),
+        gender: createGender({Gender})
     })
 
     return {
-        contador,
         createGreeting
-        // incrementar
     };
 }

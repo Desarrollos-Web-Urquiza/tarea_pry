@@ -1,38 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import useTask1 from '../composables/task1.ts';
+import { ref } from 'vue'
 
-const { contador, incrementar } = useTask1();
+const { createGreeting } = useTask1();
 
 defineProps<{ msg: string }>()
 
-const count = ref(0)
+const greetingTask1 = createGreeting({
+  presentation: "Hola, me presento.",
+  name: "PEPE",
+  surname: "ARGENTO",
+  birthdayDate: new Date("1982-08-26"),
+  Gender: "Masculino"
+});
+const greetingTask1Ref = ref(greetingTask1)
+
+console.log('greetingTask1', greetingTask1);
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-      <button @click="incrementar">Incrementar contador: {{ contador }}</button>
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <h1>TAREA 1</h1>
+  <p>{{ greetingTask1Ref.presentation }} {{ greetingTask1Ref.identification }} {{ greetingTask1Ref.birthday }} {{ greetingTask1Ref.gender }}</p>
 </template>
 
 <style scoped>

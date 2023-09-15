@@ -4,11 +4,14 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
+    <!-- <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
+    </a> -->
+    <!-- <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a> -->
+    <a href="https://es.wikipedia.org/wiki/Guillermo_Francella" target="_blank">
+      <img src="./img/Pepe-argento.png" class="logo vue" alt="Guillermo_Francella" />
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
@@ -16,7 +19,8 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <style scoped>
 .logo {
-  height: 6em;
+  height: 15em;
+  width: 15em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
