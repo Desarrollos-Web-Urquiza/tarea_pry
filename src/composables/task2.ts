@@ -1,26 +1,121 @@
-import { ref } from 'vue';
+export default function useTask2() {
 
-export default function useTask1() {
-    const contador = ref(0);
+    type Gender = "Masculino" | "Femenino";
 
-    // function greeting() {
-    //    return 'Hola, me presento';  
-    // }
+    interface GenderProps {
+        Gender: Gender;
+    }
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    const createGender = ({ 
+        Gender
+    }: GenderProps): string => {
+        return `Sexo: ${Gender}`;
+    };
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    interface BirthdayProps {
+        birthdayDate: Date;
+    }
+    
+    const createBirthday = ({ 
+        birthdayDate
+    }: BirthdayProps): string => {
+        let birthdayDateString: String  = birthdayDate.toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            timeZone: 'UTC'
+        });
+        return `Mi cumpleaños: ${birthdayDateString}`;
+    };
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    interface NameProps {
+        name: string;
+    }
+
+    const createName = ({ 
+        name
+    }: NameProps): string => {
+        return `Mi nombre: ${name}`;
+    };
+
+    interface SurnameProps {
+        surname: string;
+    }
+
+    const createSurname = ({ 
+        surname
+    }: SurnameProps): string => {
+        return `Mi apellido: ${surname}`;
+    };
+
+    interface EmailProps {
+        email: string;
+    }
+
+    const createEmail = ({
+        email
+    }: EmailProps): string => {
+        return `Mi Email: ${email}`;
+    };
+
+    interface RoleProps {
+        role: string;
+    }
+
+    const createRole = ({
+        role
+    }: RoleProps): string => {
+        return `Role: ${role}`;
+    };
+
+    interface LastAccessProps {
+        lastAccess: Date;
+    }
+
+    const createLastAccess = ({
+        lastAccess
+    }: LastAccessProps): string => {
+        let lastAccessString: String = lastAccess.toLocaleString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'UTC'
+        });
+        return `Accediste la última vez: ${lastAccessString.replace(',', '')}`;
+    };
+
+    interface createListProps {
+        name: string;
+        surname: string;
+        birthdayDate: Date;
+        Gender: Gender;
+        email: string;
+        role: string;
+        lastAccess: Date;
+    }
+    
+    const createList = ({
+        name,
+        surname,
+        birthdayDate,
+        Gender,
+        email,
+        role,
+        lastAccess
+    }: createListProps) => ({
+        name: createName({name}),
+        surname: createSurname({surname}),
+        birthday: createBirthday({birthdayDate}),
+        gender: createGender({Gender}),
+        email: createEmail({email}),
+        role: createRole({role}),
+        lastAccess: createLastAccess({lastAccess})
+    })
 
     return {
-        contador,
-        // incrementar
+        createList
     };
 }
