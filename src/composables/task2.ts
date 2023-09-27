@@ -95,6 +95,7 @@ export default function useTask2() {
         email: string;
         role: string;
         lastAccess: Date;
+        userData: string;
     }
     
     const createList = ({
@@ -104,7 +105,8 @@ export default function useTask2() {
         Gender,
         email,
         role,
-        lastAccess
+        lastAccess,
+        userData
     }: createListProps) => ({
         name: createName({name}),
         surname: createSurname({surname}),
@@ -112,7 +114,8 @@ export default function useTask2() {
         gender: createGender({Gender}),
         email: createEmail({email}),
         role: createRole({role}),
-        lastAccess: createLastAccess({lastAccess})
+        lastAccess: createLastAccess({lastAccess}),
+        userData: userData
     })
 
     return {

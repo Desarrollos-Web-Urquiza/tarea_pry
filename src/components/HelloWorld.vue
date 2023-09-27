@@ -27,7 +27,8 @@ const listTask2 = createList({
   Gender: "Masculino",
   email: "email@email.com",
   role: "Admin",
-  lastAccess: new Date("2023-08-09T12:15:56Z")
+  lastAccess: new Date("2023-08-09T12:15:56Z"),
+  userData: "Mis datos de Usuario son:"
 });
 
 const listTask2Ref = ref(listTask2)
@@ -50,6 +51,7 @@ console.log('greetingTask1', greetingTask1);
   <p>{{ greetingTask1Ref.presentation }} {{ greetingTask1Ref.identification }} {{ greetingTask1Ref.birthday }} {{ greetingTask1Ref.gender }}</p>
   <h1>TAREA 2</h1>
   <div>
+    <p>{{ listTask2.userData }}</p>
     <ul>
       <li v-for="(value, key) in listTask2" :key="key">
         <!-- Si la clave es 'email', separa "Mi Email:" del valor y renderiza el email como un enlace -->
@@ -79,5 +81,10 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 </style>
