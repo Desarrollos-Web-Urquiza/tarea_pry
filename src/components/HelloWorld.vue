@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import useTask1 from '../composables/task1.ts';
 import useTask2 from '../composables/task2.ts';
+import useTask3 from '../composables/task3.ts'; // Asegúrate de importar el hook useTask3
+
 import { ref } from 'vue'
 
 const { createGreeting } = useTask1();
 const { createList } = useTask2();
+const { createGreeting2 } = useTask3();
 
 defineProps<{ msg: string }>()
 
@@ -29,7 +32,16 @@ const listTask2 = createList({
 
 const listTask2Ref = ref(listTask2)
 
-console.log('listTask2', listTask2);
+const greetingTask3 = createGreeting2({
+  name: "Pepe",
+  birthdayDate: new Date("1986-08-26"),
+  role: "Administrador del sistema",
+  workAreas: ["/usr/home", "/home"]
+});
+
+const greetingTask3Ref = ref(greetingTask3)
+
+console.log('listTask2Ref', listTask2Ref);
 console.log('greetingTask1', greetingTask1);
 </script>
 
@@ -51,6 +63,12 @@ console.log('greetingTask1', greetingTask1);
     </ul>
   </div>
   <h1>TAREA 3</h1>
+  <p>{{ greetingTask3Ref.greeting }}</p>
+  <ul>
+    <li v-for="(value, key) in greetingTask3Ref.workAreas" :key="key">
+      {{ value }}
+    </li>
+  </ul>
 </template>
 
 <style scoped>

@@ -1,26 +1,51 @@
-import { ref } from 'vue';
+export default function useTask3() {
 
-export default function useTask1() {
-    const contador = ref(0);
+    const createName = (name: string): string => {
+        return `${name},`;
+    };
 
-    // function greeting() {
-    //    return 'Hola, me presento';  
-    // }
+    const calculateAge = (birthdayDate: Date): number => {
+        const today = new Date();
+        let age = today.getFullYear() - birthdayDate.getFullYear();
+        const monthDifference = today.getMonth() - birthdayDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthdayDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    const createAge = (birthdayDate: Date): string => {
+        const age = calculateAge(birthdayDate);
+        return `tienes ${age} años,`;
+    };
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    const createRole = (role: string): string => {
+        return `eres ${role}.`;
+    };
 
-    // function incrementar() {
-    //     contador.value++;
-    // }
+    const workAreaIntro = "Esta es tu área de trabajo:";
+
+    interface createGreetingProps {
+        name: string;
+        birthdayDate: Date;
+        role: string;
+        workAreas: string[];
+    }
+
+    const createGreeting2 = ({
+        name,
+        birthdayDate,
+        role,
+        workAreas
+    }: createGreetingProps) => {
+        const greeting = `${createName(name)} ${createAge(birthdayDate)} ${createRole(role)} ${workAreaIntro}`;
+        return {
+            greeting,
+            workAreas
+        };
+    };
 
     return {
-        contador,
-        // incrementar
+        createGreeting2
     };
 }
